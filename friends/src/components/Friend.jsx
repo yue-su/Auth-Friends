@@ -18,6 +18,12 @@ const Friend = props => {
     }
     const deleteHandler = event => {
         event.preventDefault()
+        axiosWithAuth()
+            .delete(`/api/friends/${id}`)
+            .then(res => {
+                props.setList(res.data)
+                history.push('/friendList')
+        })
     }
 
     useEffect(() => {
