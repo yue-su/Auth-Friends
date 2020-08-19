@@ -15,13 +15,15 @@ const FriendList = props => {
             <Box>
               {list.map((item) => {
                 return (
-                  <Box key={item.id} display='flex'>
+                  <Box key={item.id} display='flex' justifyContent='space-between'>
                         <Typography>{item.name}</Typography>
                         <Button onClick={()=> history.push(`/friendList/${item.id}`)}>Detail</Button>
-                        <Button>Delete</Button>
                   </Box>
                 )
               })}
+            </Box>
+            <Box>
+                <Button color='primary' onClick={()=>history.push('/friend/create')}>Add a new friend</Button>
             </Box>
       </Container>
     )

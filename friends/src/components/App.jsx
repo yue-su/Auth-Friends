@@ -5,6 +5,7 @@ import Login from "./Login"
 import FriendList from "./FriendList"
 import Friend from "./Friend"
 import { axiosWithAuth } from "../utils/axiosWithAuth"
+import FriendForm from "./FriendForm"
 
 const App = () => {
   const [list, setList] = useState([])
@@ -30,7 +31,10 @@ const App = () => {
         </Route>
         <Route path="/friendList/:id">
           <Friend />
-        </Route>
+              </Route>
+              <Route path='/friend/create'>
+                  <FriendForm setList={setList} />
+              </Route>
       </Switch>
     </Container>
   )
