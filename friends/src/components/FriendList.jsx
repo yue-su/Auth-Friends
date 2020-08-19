@@ -1,32 +1,29 @@
 import React, { useState, useEffect } from 'react'
-import {axiosWithAuth} from '../utils/axiosWithAuth'
-import { Container, Typography, Box } from '@material-ui/core'
+import { Container, Typography, Box, Grid, Button } from '@material-ui/core'
+import { useHistory } from 'react-router-dom'
 
-const FriendList = () => {
 
-    const [list, setList] = useState([])
 
-    useEffect(() => {
-        axiosWithAuth()
-            .get('/api/friends')
-            .then(res => setList(res.data))
-            .catch(err => console.log(err))
-    },[])
+const FriendList = props => {
+
+    const {list} = props
+
+    const history = useHistory()
 
     return (
-        <Container maxWidth="sm">
-            {
-                list.map(item => {
-                    return (
-                      <Box key={item.id}>
-                            <Typography>{item.name}</Typography>
-                            <Typography>{item.age}</Typography>
-                            <Typography>{item.email}</Typography>
-                      </Box>
-                    )
-                })
-            }
-        </Container>
+      <Container maxWidth="sm"> 
+            <Box>
+              {list.map((item) => {
+                return (
+                  <Box key={item.id} display='flex'>
+                        <Typography>{item.name}</Typography>
+                        <Button onClick={()=> history.push(`/friendList/${item.id}`)}>Detail</Button>
+                        <Button>Delete</Button>
+                  </Box>
+                )
+              })}
+            </Box>
+      </Container>
     )
 }
 
