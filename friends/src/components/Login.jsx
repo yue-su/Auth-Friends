@@ -1,8 +1,11 @@
 import React,{useState} from 'react'
 import { Typography, Box, TextField, Button } from "@material-ui/core"
 import {axiosWithAuth} from '../utils/axiosWithAuth'
+import { useHistory } from 'react-router-dom'
 
 const Login = props => {
+
+    const history = useHistory()
 
     const [login, setLogin] = useState({ username: '', password: '' })
     
@@ -20,9 +23,8 @@ const Login = props => {
         axiosWithAuth()
             .post('/api/login', login)
             .then(res => {
-                console.log(res.data)
                 localStorage.setItem("token", res.data.payload)
-                props.history.push('/friendList')
+                history.push('/friendList')
         }).catch(err => console.log(err.data))
     }
 
