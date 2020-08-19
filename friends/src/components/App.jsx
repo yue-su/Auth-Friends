@@ -34,7 +34,10 @@ const App = () => {
         </Route>
         <Route path="/friend/create">
           <FriendForm setList={setList} />
-        </Route>
+              </Route>
+              <Route path='/friend/update'>
+                  <FriendUpdate />
+              </Route>
       </Switch>
     </Container>
   )
