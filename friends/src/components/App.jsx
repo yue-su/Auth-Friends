@@ -7,6 +7,7 @@ import Friend from "./Friend"
 import { axiosWithAuth } from "../utils/axiosWithAuth"
 import FriendForm from "./FriendForm"
 import FriendUpdate from './FriendUpdate'
+import PrivateRoute from "./privateRoute"
 
 const App = () => {
   const [list, setList] = useState([])
@@ -27,18 +28,18 @@ const App = () => {
         <Route path="/" exact>
           <Login />
         </Route>
-        <Route path="/friendList" exact>
+        <PrivateRoute path="/friendList" exact>
           <FriendList list={list} />
-        </Route>
+        </PrivateRoute>
         <Route path="/friendList/:id">
           <Friend setList={setList} />
         </Route>
         <Route path="/friend/create">
           <FriendForm setList={setList} />
-              </Route>
-              <Route path='/friend/update/:id'>
-                  <FriendUpdate setList={setList} />
-              </Route>
+        </Route>
+        <Route path="/friend/update/:id">
+          <FriendUpdate setList={setList} />
+        </Route>
       </Switch>
     </Container>
   )
