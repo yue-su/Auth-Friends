@@ -15,6 +15,7 @@ const Friend = props => {
     
     const editHandler = event => {
         event.preventDefault()
+        history.push(`/friend/update/${id}`)
     }
     const deleteHandler = event => {
         event.preventDefault()
